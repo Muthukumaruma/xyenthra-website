@@ -1,108 +1,62 @@
-import { Star, Quote } from 'lucide-react';
+import { ArrowRight, MessageSquare } from 'lucide-react';
 
-const testimonials = [
-  {
-    name: 'Rajesh Kumar',
-    role: 'CTO, FinEdge Solutions',
-    company: 'FinEdge Solutions',
-    avatar: 'RK',
-    color: 'from-green-500 to-emerald-600',
-    rating: 5,
-    text: 'Xyenthra delivered our core banking platform in record time without compromising on quality. Their team treated the project as their own — exceptional ownership and technical depth.',
-  },
-  {
-    name: 'Sarah Mitchell',
-    role: 'VP Engineering, LogiChain Inc.',
-    company: 'LogiChain Inc.',
-    avatar: 'SM',
-    color: 'from-orange-500 to-amber-600',
-    rating: 5,
-    text: 'The cloud migration Xyenthra executed cut our infrastructure costs by 40% while improving system performance by 3x. The team was knowledgeable, communicative, and delivered on every promise.',
-  },
-  {
-    name: 'Priya Nair',
-    role: 'Director of Technology, MedCore',
-    company: 'MedCore',
-    avatar: 'PN',
-    color: 'from-blue-500 to-cyan-600',
-    rating: 5,
-    text: 'XyHR transformed how we manage 2,000+ employees across 5 offices. The implementation was seamless and the support has been outstanding. Truly a technology partner, not just a vendor.',
-  },
-  {
-    name: 'Ahmed Al-Rashid',
-    role: 'CEO, RetailPulse',
-    company: 'RetailPulse',
-    avatar: 'AA',
-    color: 'from-purple-500 to-violet-600',
-    rating: 5,
-    text: "Their AI-powered analytics solution gave us real-time insights that increased our seasonal revenue by 28%. Xyenthra's data team understood our domain deeply and delivered measurable ROI.",
-  },
-  {
-    name: 'Jennifer Wong',
-    role: 'Head of Product, StartupLab',
-    company: 'StartupLab',
-    avatar: 'JW',
-    color: 'from-pink-500 to-rose-600',
-    rating: 5,
-    text: 'As a startup, we needed a partner who could move fast and build right. Xyenthra delivered our MVP in 6 weeks and has been scaling it with us ever since. They feel like an extension of our team.',
-  },
-  {
-    name: 'Suresh Varma',
-    role: 'IT Manager, GovTech India',
-    company: 'GovTech India',
-    avatar: 'SV',
-    color: 'from-teal-500 to-green-600',
-    rating: 5,
-    text: 'Xyenthra implemented a citizen portal serving 5 million users with 99.99% uptime. Their security practices and compliance expertise made them the obvious choice for a government-grade solution.',
-  },
+const process = [
+  { step: '01', title: 'Tell us your idea', desc: 'Share your project brief — what you need, your timeline, and budget. No forms, just a conversation.' },
+  { step: '02', title: 'We scope it together', desc: "We'll map out the work, suggest the right tech stack, and give you a clear proposal with no hidden costs." },
+  { step: '03', title: 'We build it', desc: 'You get regular updates, working demos, and direct access to the team throughout the project.' },
+  { step: '04', title: 'You own it completely', desc: 'Full source code, documentation, and handover. No vendor lock-in, ever.' },
 ];
 
 export default function Testimonials() {
   return (
-    <section className="section-padding bg-[#080d08] relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500/30 to-transparent" />
-
+    <section className="section-padding bg-white">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/30 rounded-full px-4 py-2 mb-4">
-            <span className="text-orange-400 text-sm font-medium">Client Stories</span>
+          <div className="inline-flex items-center gap-2 bg-green-100 border border-green-200 rounded-full px-4 py-2 mb-4">
+            <span className="text-green-700 text-sm font-medium">How It Works</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-            Trusted by <span className="gradient-text">Leaders</span>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+            Simple. Transparent. <span className="gradient-text">No Surprises.</span>
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Real results from real partnerships — hear what our clients say about working with Xyenthra.
+          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+            Here's exactly how we work with clients from first contact to final delivery.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map((t, i) => (
-            <div key={i} className="card-glass p-6 flex flex-col gap-4">
-              {/* Stars */}
-              <div className="flex gap-1">
-                {Array(t.rating).fill(0).map((_, s) => (
-                  <Star key={s} size={14} className="text-yellow-400 fill-yellow-400" />
-                ))}
-              </div>
-
-              {/* Quote */}
-              <div className="relative">
-                <Quote size={20} className="text-green-500/40 mb-2" />
-                <p className="text-gray-300 text-sm leading-relaxed italic">{t.text}</p>
-              </div>
-
-              {/* Author */}
-              <div className="flex items-center gap-3 mt-auto pt-4 border-t border-white/10">
-                <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${t.color} flex items-center justify-center text-white text-sm font-bold flex-shrink-0`}>
-                  {t.avatar}
-                </div>
-                <div>
-                  <div className="text-white font-semibold text-sm">{t.name}</div>
-                  <div className="text-gray-500 text-xs">{t.role}</div>
-                </div>
+        {/* Process steps */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {process.map((p, i) => (
+            <div key={i} className="relative">
+              {i < process.length - 1 && (
+                <div className="hidden lg:block absolute top-8 left-full w-full h-px bg-gradient-to-r from-green-300 to-transparent z-0 -translate-y-px" />
+              )}
+              <div className="relative bg-gray-50 border border-gray-100 rounded-2xl p-6 hover:border-green-200 hover:shadow-md transition-all duration-300">
+                <div className="text-4xl font-black gradient-text mb-4">{p.step}</div>
+                <h3 className="text-gray-900 font-bold mb-2">{p.title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{p.desc}</p>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Be our first client CTA */}
+        <div className="bg-gradient-to-br from-green-600 via-emerald-600 to-green-700 rounded-3xl p-10 md:p-16 text-center relative overflow-hidden">
+          <div className="absolute inset-0 bg-grid opacity-20" />
+          <div className="relative">
+            <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 rounded-full px-4 py-2 mb-6">
+              <MessageSquare size={14} className="text-white" />
+              <span className="text-white text-sm font-medium">We're taking on new clients</span>
+            </div>
+            <h3 className="text-3xl md:text-4xl font-black text-white mb-4">
+              15+ Years of Experience.<br />Working for You.
+            </h3>
+            <p className="text-green-100 text-lg mb-8 max-w-2xl mx-auto">
+              Xyenthra is a new company — but our team brings over 15 years of real-world software engineering experience. You get senior-level thinking at startup-friendly rates. Our early clients get the best of both worlds.
+            </p>
+            <a href="#contact" className="inline-flex items-center gap-2 bg-white text-green-700 font-bold px-8 py-4 rounded-xl hover:bg-green-50 transition-colors shadow-lg">
+              Start a Conversation <ArrowRight size={18} />
+            </a>
+          </div>
         </div>
       </div>
     </section>

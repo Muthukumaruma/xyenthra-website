@@ -1,113 +1,95 @@
-import { ArrowRight, Zap, Users, LineChart, Lock } from 'lucide-react';
+import { ArrowRight, Code2, GitPullRequest, Brain, Zap } from 'lucide-react';
 
-const products = [
-  {
-    badge: 'SaaS Platform',
-    badgeColor: 'text-green-400 bg-green-400/10 border-green-400/30',
-    icon: <Zap size={32} />,
-    iconBg: 'from-green-500 to-emerald-600',
-    title: 'XyFlow',
-    subtitle: 'Workflow Automation Platform',
-    description:
-      'An intelligent workflow orchestration platform that automates repetitive business processes. Connect your tools, define rules, and let XyFlow handle the rest — saving hundreds of hours every month.',
-    features: ['Visual Workflow Builder', 'AI-Powered Triggers', '200+ Integrations', 'Real-time Analytics'],
-    accent: 'border-green-500/40 hover:border-green-500/70',
-    glow: 'hover:shadow-green-500/15',
-  },
-  {
-    badge: 'HR Tech',
-    badgeColor: 'text-orange-400 bg-orange-400/10 border-orange-400/30',
-    icon: <Users size={32} />,
-    iconBg: 'from-orange-500 to-amber-600',
-    title: 'XyHR',
-    subtitle: 'Smart HR Management Suite',
-    description:
-      'A comprehensive human resource management system built for modern organizations. Streamline recruitment, payroll, performance reviews, and employee engagement in one unified dashboard.',
-    features: ['AI Resume Screening', 'Payroll Automation', 'Performance Tracking', 'Employee Self-Service'],
-    accent: 'border-orange-500/40 hover:border-orange-500/70',
-    glow: 'hover:shadow-orange-500/15',
-  },
-  {
-    badge: 'Analytics',
-    badgeColor: 'text-blue-400 bg-blue-400/10 border-blue-400/30',
-    icon: <LineChart size={32} />,
-    iconBg: 'from-blue-500 to-cyan-600',
-    title: 'XyInsight',
-    subtitle: 'Business Intelligence Dashboard',
-    description:
-      'Turn your business data into actionable intelligence. XyInsight connects to any data source and delivers real-time dashboards, predictive forecasts, and executive reporting with zero-code setup.',
-    features: ['Real-time Dashboards', 'Predictive Analytics', 'Multi-source Connectors', 'Custom Reports'],
-    accent: 'border-blue-500/40 hover:border-blue-500/70',
-    glow: 'hover:shadow-blue-500/15',
-  },
-  {
-    badge: 'Security',
-    badgeColor: 'text-purple-400 bg-purple-400/10 border-purple-400/30',
-    icon: <Lock size={32} />,
-    iconBg: 'from-purple-500 to-violet-600',
-    title: 'XyGuard',
-    subtitle: 'Enterprise Security Platform',
-    description:
-      'A proactive cybersecurity platform that monitors, detects, and responds to threats in real time. XyGuard gives your team full visibility across your entire IT estate with zero-trust architecture.',
-    features: ['Threat Detection', 'Zero-Trust Access', 'Compliance Reports', '24/7 SOC Monitoring'],
-    accent: 'border-purple-500/40 hover:border-purple-500/70',
-    glow: 'hover:shadow-purple-500/15',
-  },
+const features = [
+  { icon: <Brain size={20} />, title: 'AI-Powered Reviews', desc: 'GPT-4 analyses your code for bugs, security issues, and best practices instantly.' },
+  { icon: <GitPullRequest size={20} />, title: 'PR Integration', desc: 'Connect directly to GitHub and get inline review comments on every pull request.' },
+  { icon: <Zap size={20} />, title: 'Instant Feedback', desc: 'Get detailed code review reports in seconds, not hours.' },
+  { icon: <Code2 size={20} />, title: 'Multi-Language', desc: 'Supports JavaScript, TypeScript, Python, Java, Go, and more.' },
 ];
 
 export default function Products() {
   return (
-    <section id="products" className="section-padding bg-black relative overflow-hidden">
-      {/* Background accent */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-px bg-gradient-to-r from-transparent via-green-500/40 to-transparent" />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-px bg-gradient-to-r from-transparent via-green-500/20 to-transparent" />
+    <section id="products" className="section-padding bg-white relative overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
 
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/30 rounded-full px-4 py-2 mb-4">
-            <span className="text-orange-400 text-sm font-medium">Built by Xyenthra</span>
+          <div className="inline-flex items-center gap-2 bg-orange-100 border border-orange-200 rounded-full px-4 py-2 mb-4">
+            <span className="text-orange-700 text-sm font-medium">Our Product</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-            Our <span className="gradient-text">Products</span>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+            Introducing <span className="gradient-text">CodeSense</span>
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Proprietary software products crafted to solve real business challenges — ready to deploy, built to scale.
+          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+            Our flagship product — an AI-powered code review platform that helps development teams ship better code, faster.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {products.map((product, i) => (
-            <div
-              key={i}
-              className={`relative bg-white/5 border ${product.accent} rounded-3xl p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${product.glow} group`}
-            >
-              <div className="flex items-start justify-between mb-6">
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${product.iconBg} flex items-center justify-center text-white shadow-xl group-hover:scale-105 transition-transform duration-300`}>
-                  {product.icon}
+        {/* Main product card */}
+        <div className="max-w-5xl mx-auto">
+          <div className="relative bg-gradient-to-br from-green-50 via-white to-orange-50 border border-green-200 rounded-3xl p-10 shadow-xl shadow-green-100/50 overflow-hidden">
+            {/* Background decoration */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-green-100/60 to-transparent rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-orange-100/40 to-transparent rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+
+            <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Left */}
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg shadow-green-200">
+                    <Code2 size={28} className="text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-3xl font-black text-gray-900">CodeSense</h3>
+                    <span className="text-xs font-semibold text-green-700 bg-green-100 border border-green-200 rounded-full px-3 py-0.5">Live at codesense.online</span>
+                  </div>
                 </div>
-                <span className={`text-xs font-semibold border rounded-full px-3 py-1 ${product.badgeColor}`}>
-                  {product.badge}
-                </span>
+
+                <p className="text-gray-600 leading-relaxed mb-6 text-lg">
+                  CodeSense uses GPT-4 to review your code automatically — catching bugs, security vulnerabilities, and style issues before they reach production. Connect your GitHub repo and get AI reviews on every pull request.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <a
+                    href="https://codesense.online"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary flex items-center gap-2 justify-center"
+                  >
+                    Try CodeSense Free <ArrowRight size={16} />
+                  </a>
+                  <a
+                    href="https://app.codesense.online"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-outline flex items-center gap-2 justify-center"
+                  >
+                    Open App
+                  </a>
+                </div>
               </div>
 
-              <h3 className="text-3xl font-black text-white mb-1">{product.title}</h3>
-              <p className="text-gray-400 text-sm font-medium mb-4">{product.subtitle}</p>
-              <p className="text-gray-400 leading-relaxed mb-6">{product.description}</p>
-
-              <ul className="grid grid-cols-2 gap-2 mb-8">
-                {product.features.map((feat) => (
-                  <li key={feat} className="flex items-center gap-2 text-sm text-gray-300">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 flex-shrink-0" />
-                    {feat}
-                  </li>
+              {/* Right — features */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {features.map((f, i) => (
+                  <div key={i} className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:border-green-200 hover:shadow-md transition-all duration-200">
+                    <div className="w-9 h-9 rounded-xl bg-green-50 text-green-600 flex items-center justify-center mb-3">
+                      {f.icon}
+                    </div>
+                    <h4 className="text-gray-900 font-semibold text-sm mb-1">{f.title}</h4>
+                    <p className="text-gray-400 text-xs leading-relaxed">{f.desc}</p>
+                  </div>
                 ))}
-              </ul>
-
-              <button className="flex items-center gap-2 text-sm font-semibold text-green-400 hover:text-green-300 transition-colors group/btn">
-                Learn more <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
-              </button>
+              </div>
             </div>
-          ))}
+          </div>
+
+          {/* More coming soon */}
+          <div className="mt-8 text-center">
+            <p className="text-gray-400 text-sm">
+              More products are in development. <span className="text-green-600 font-medium">Stay tuned.</span>
+            </p>
+          </div>
         </div>
       </div>
     </section>

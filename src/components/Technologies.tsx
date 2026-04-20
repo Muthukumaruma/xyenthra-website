@@ -1,62 +1,66 @@
 const techStack = [
   {
     category: 'Frontend',
-    color: 'from-blue-500/20 to-cyan-500/20',
-    border: 'border-blue-500/30',
-    accent: 'text-blue-400',
+    color: 'bg-blue-50',
+    border: 'border-blue-100',
+    accent: 'text-blue-700',
+    tagBg: 'bg-blue-100 text-blue-700',
     items: ['React', 'Next.js', 'Vue.js', 'Angular', 'TypeScript', 'Tailwind CSS'],
   },
   {
     category: 'Backend',
-    color: 'from-green-500/20 to-emerald-500/20',
-    border: 'border-green-500/30',
-    accent: 'text-green-400',
+    color: 'bg-green-50',
+    border: 'border-green-100',
+    accent: 'text-green-700',
+    tagBg: 'bg-green-100 text-green-700',
     items: ['Node.js', 'Python', 'Java', 'Go', 'FastAPI', 'GraphQL'],
   },
   {
     category: 'Cloud & DevOps',
-    color: 'from-orange-500/20 to-amber-500/20',
-    border: 'border-orange-500/30',
-    accent: 'text-orange-400',
+    color: 'bg-orange-50',
+    border: 'border-orange-100',
+    accent: 'text-orange-700',
+    tagBg: 'bg-orange-100 text-orange-700',
     items: ['AWS', 'Azure', 'GCP', 'Docker', 'Kubernetes', 'Terraform'],
   },
   {
     category: 'Databases',
-    color: 'from-purple-500/20 to-violet-500/20',
-    border: 'border-purple-500/30',
-    accent: 'text-purple-400',
+    color: 'bg-purple-50',
+    border: 'border-purple-100',
+    accent: 'text-purple-700',
+    tagBg: 'bg-purple-100 text-purple-700',
     items: ['PostgreSQL', 'MongoDB', 'Redis', 'MySQL', 'Elasticsearch', 'Cassandra'],
   },
   {
     category: 'AI & ML',
-    color: 'from-pink-500/20 to-rose-500/20',
-    border: 'border-pink-500/30',
-    accent: 'text-pink-400',
+    color: 'bg-pink-50',
+    border: 'border-pink-100',
+    accent: 'text-pink-700',
+    tagBg: 'bg-pink-100 text-pink-700',
     items: ['OpenAI', 'LangChain', 'TensorFlow', 'PyTorch', 'Hugging Face', 'MLflow'],
   },
   {
     category: 'Mobile',
-    color: 'from-yellow-500/20 to-orange-500/20',
-    border: 'border-yellow-500/30',
-    accent: 'text-yellow-400',
+    color: 'bg-yellow-50',
+    border: 'border-yellow-100',
+    accent: 'text-yellow-700',
+    tagBg: 'bg-yellow-100 text-yellow-700',
     items: ['React Native', 'Flutter', 'Swift', 'Kotlin', 'Expo', 'Firebase'],
   },
 ];
 
 export default function Technologies() {
   return (
-    <section id="technologies" className="section-padding bg-black relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-green-500/30 to-transparent" />
-
+    <section id="technologies" className="section-padding bg-white">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 rounded-full px-4 py-2 mb-4">
-            <span className="text-blue-400 text-sm font-medium">Tech Stack</span>
+          <div className="inline-flex items-center gap-2 bg-blue-100 border border-blue-200 rounded-full px-4 py-2 mb-4">
+            <span className="text-blue-700 text-sm font-medium">Tech Stack</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
             Technologies We <span className="gradient-text">Master</span>
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
             We stay at the forefront of technology, working with the best tools to deliver future-proof solutions.
           </p>
         </div>
@@ -65,14 +69,14 @@ export default function Technologies() {
           {techStack.map((stack, i) => (
             <div
               key={i}
-              className={`bg-gradient-to-br ${stack.color} border ${stack.border} rounded-2xl p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-xl`}
+              className={`${stack.color} border ${stack.border} rounded-2xl p-6 hover:-translate-y-1 transition-all duration-300 hover:shadow-lg`}
             >
               <h3 className={`text-lg font-bold mb-4 ${stack.accent}`}>{stack.category}</h3>
               <div className="flex flex-wrap gap-2">
                 {stack.items.map((tech) => (
                   <span
                     key={tech}
-                    className="bg-white/10 border border-white/10 text-gray-200 text-sm font-medium rounded-lg px-3 py-1.5 hover:bg-white/20 transition-colors"
+                    className={`${stack.tagBg} text-sm font-medium rounded-lg px-3 py-1.5`}
                   >
                     {tech}
                   </span>
@@ -82,16 +86,17 @@ export default function Technologies() {
           ))}
         </div>
 
-        {/* Certifications */}
-        <div className="mt-16 text-center">
-          <p className="text-gray-500 text-sm mb-6 uppercase tracking-widest">Certified & Compliant</p>
-          <div className="flex flex-wrap justify-center gap-4">
-            {['ISO 27001', 'SOC 2 Type II', 'AWS Partner', 'Google Cloud Partner', 'Microsoft Gold Partner', 'NASSCOM Member'].map((cert) => (
+        {/* Stack used in CodeSense */}
+        <div className="mt-16 p-8 rounded-3xl bg-gradient-to-br from-green-50 to-orange-50 border border-green-100 text-center">
+          <p className="text-gray-500 text-sm mb-2 uppercase tracking-widest">Powering CodeSense</p>
+          <h3 className="text-gray-900 font-bold text-xl mb-6">Built with the best stack</h3>
+          <div className="flex flex-wrap justify-center gap-3">
+            {['React', 'Vite', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'OpenAI GPT-4', 'Tailwind CSS'].map((tech) => (
               <span
-                key={cert}
-                className="bg-white/5 border border-white/10 text-gray-300 rounded-xl px-5 py-2.5 text-sm font-medium hover:border-green-500/40 transition-colors"
+                key={tech}
+                className="bg-white border border-green-200 text-green-700 rounded-xl px-5 py-2.5 text-sm font-semibold shadow-sm"
               >
-                {cert}
+                {tech}
               </span>
             ))}
           </div>

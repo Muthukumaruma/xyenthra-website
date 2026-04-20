@@ -1,18 +1,21 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import logo from '../xyenthra-logo.png';
 
 const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'Services', href: '#services' },
-  { label: 'Products', href: '#products' },
-  { label: 'About', href: '#about' },
-  { label: 'Technologies', href: '#technologies' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', to: '/' },
+  { label: 'Services', to: '/services' },
+  { label: 'Products', to: '/products' },
+  { label: 'About', to: '/about' },
+  { label: 'Technologies', to: '/technologies' },
+  { label: 'Contact', to: '/contact' },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -21,48 +24,40 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-black/80 backdrop-blur-xl border-b border-white/10 shadow-xl'
-          : 'bg-transparent'
-      }`}
-    >
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      scrolled ? 'bg-white/95 backdrop-blur-xl border-b border-gray-200 shadow-md' : 'bg-white/80 backdrop-blur-sm'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between h-20">
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-400 to-orange-500 flex items-center justify-center font-black text-white text-xl shadow-lg shadow-green-500/30">
-            X
-          </div>
-          <div className="leading-tight">
-            <span className="text-white font-bold text-lg block">Xyenthra</span>
-            <span className="text-green-400 text-xs tracking-widest uppercase">Technologies</span>
-          </div>
-        </a>
+        <Link to="/">
+          <img src={logo} alt="Xyenthra Technologies" className="h-12 w-auto object-contain" />
+        </Link>
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-gray-300 hover:text-green-400 text-sm font-medium transition-colors duration-200"
+            <Link
+              key={link.to}
+              to={link.to}
+              className={`text-sm font-medium transition-colors duration-200 ${
+                pathname === link.to ? 'text-green-600 font-semibold' : 'text-gray-600 hover:text-green-600'
+              }`}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
         {/* CTA */}
         <div className="hidden md:block">
-          <a href="#contact" className="btn-primary text-sm py-2.5 px-6">
+          <Link to="/contact" className="btn-primary text-sm py-2.5 px-6">
             Get a Quote
-          </a>
+          </Link>
         </div>
 
-        {/* Mobile menu button */}
+        {/* Mobile toggle */}
         <button
-          className="md:hidden text-gray-300 hover:text-white transition-colors"
+          className="md:hidden text-gray-600 hover:text-gray-900 transition-colors"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
@@ -72,20 +67,22 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-black/95 backdrop-blur-xl border-t border-white/10 px-4 py-6 flex flex-col gap-4">
+        <div className="md:hidden bg-white border-t border-gray-100 shadow-lg px-4 py-6 flex flex-col gap-4">
           {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-gray-300 hover:text-green-400 font-medium py-2 transition-colors"
+            <Link
+              key={link.to}
+              to={link.to}
+              className={`font-medium py-2 transition-colors ${
+                pathname === link.to ? 'text-green-600' : 'text-gray-600 hover:text-green-600'
+              }`}
               onClick={() => setMobileOpen(false)}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
-          <a href="#contact" className="btn-primary text-center mt-2">
+          <Link to="/contact" className="btn-primary text-center mt-2" onClick={() => setMobileOpen(false)}>
             Get a Quote
-          </a>
+          </Link>
         </div>
       )}
     </nav>

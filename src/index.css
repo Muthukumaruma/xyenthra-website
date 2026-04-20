@@ -14,26 +14,26 @@ html {
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background-color: #0a0f0a;
-  color: #e2e8f0;
+  background-color: #ffffff;
+  color: #0f172a;
   overflow-x: hidden;
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-400 hover:to-emerald-500 text-white font-semibold px-8 py-3 rounded-xl transition-all duration-300 shadow-lg hover:-translate-y-0.5 inline-block;
+    @apply bg-gradient-to-r from-green-600 to-emerald-700 hover:from-green-500 hover:to-emerald-600 text-white font-semibold px-8 py-3 rounded-xl transition-all duration-300 shadow-lg shadow-green-500/25 hover:-translate-y-0.5 inline-block;
   }
 
   .btn-outline {
-    @apply border-2 border-green-500 text-green-400 hover:bg-green-500 hover:text-white font-semibold px-8 py-3 rounded-xl transition-all duration-300 hover:-translate-y-0.5 inline-block;
+    @apply border-2 border-green-600 text-green-700 hover:bg-green-600 hover:text-white font-semibold px-8 py-3 rounded-xl transition-all duration-300 hover:-translate-y-0.5 inline-block;
   }
 
   .card-glass {
-    @apply bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-green-500/40 transition-all duration-300 hover:-translate-y-1;
+    @apply bg-white border border-gray-100 rounded-2xl shadow-sm hover:border-green-400/60 hover:shadow-lg hover:shadow-green-500/10 transition-all duration-300 hover:-translate-y-1;
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-green-400 via-emerald-300 to-orange-400 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-green-600 via-emerald-500 to-orange-500 bg-clip-text text-transparent;
   }
 
   .section-padding {
@@ -45,7 +45,7 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0f0a;
+  background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
   background: #16a34a;
@@ -54,9 +54,22 @@ body {
 
 .bg-grid {
   background-image:
-    linear-gradient(rgba(34, 197, 94, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34, 197, 94, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(22, 163, 74, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(22, 163, 74, 0.07) 1px, transparent 1px);
   background-size: 60px 60px;
+}
+
+@keyframes kenBurns {
+  0%   { transform: scale(1)    translateX(0%)   translateY(0%); }
+  25%  { transform: scale(1.06) translateX(-1%)  translateY(-1%); }
+  50%  { transform: scale(1.1)  translateX(1%)   translateY(-2%); }
+  75%  { transform: scale(1.06) translateX(-1%)  translateY(0%); }
+  100% { transform: scale(1)    translateX(0%)   translateY(0%); }
+}
+
+.animate-ken-burns {
+  animation: kenBurns 20s ease-in-out infinite;
+  transform-origin: center center;
 }
 
 @keyframes float {
